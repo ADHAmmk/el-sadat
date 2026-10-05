@@ -842,7 +842,6 @@
             <div class="controls-group">
                 <button class="control-btn" id="prev-btn" onclick="userChangeSlide(-1)">◀ المشهد السابق</button>
                 <button class="control-btn pause-btn" id="pause-btn" onclick="toggleAutoPlay()">⏸️ إيقاف مؤقت</button>
-                
             </div>
             <div class="controls-group">
                 <button class="control-btn exit-btn" onclick="exitProject()">✕ إنهاء العرض</button>
@@ -1255,7 +1254,6 @@
             `;
 
             document.getElementById('prev-btn').disabled = (currentSlideIndex === 0);
-            document.getElementById('next-btn').disabled = false;
 
             if (!isAutoPlayPaused) {
                 // تشغيل الصوت التلقائي فور تحميل المشهد
