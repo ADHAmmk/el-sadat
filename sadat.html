@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حكاية اسم مدرسة السادات الثانوية - العرض السينمائي الناطق التلقائي</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0b0f19;
+            color: #f0f6fc;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #30363d;
+            padding-bottom: 20px;
+            width: 100%;
+            max-width: 960px;
+        }
+
+        .school-title-badge {
+            display: inline-block;
+            background: rgba(88, 166, 255, 0.1);
+            color: #58a6ff;
+            border: 1px solid rgba(88, 166, 255, 0.3);
+            padding: 5px 16px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        header h1 {
+            color: #ffffff;
+            font-size: 2.3rem;
+            margin-bottom: 8px;
+            font-weight: 900;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        header p {
+            color: #8b949e;
+            font-size: 1.15rem;
+            margin-bottom: 18px;
+        }
+
+        .dev-credit-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #161b22;
+            border: 1px solid #e3b341;
+            padding: 7px 18px;
+            border-radius: 25px;
+            color: #e3b341;
+            font-size: 0.95rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .header-actions {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* زر بدء المشروع بالشاشة الكاملة */
+        .start-project-btn {
+            background: linear-gradient(135deg, #238636, #2ea043);
+            color: white;
+            border: none;
+            padding: 16px 38px;
+            border-radius: 14px;
+            font-size: 1.25rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            box-shadow: 0 6px 25px rgba(35, 134, 54, 0.45);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .start-project-btn:hover {
+            background: linear-gradient(135deg, #2ea043, #3fb950);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 30px rgba(46, 160, 67, 0.55);
+        }
+
+        .view-dev-btn {
+            background-color: #21262d;
+            color: #e3b341;
+            border: 1px solid #e3b341;
+            padding: 15px 24px;
+            border-radius: 14px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .view-dev-btn:hover {
+            background-color: rgba(227, 179, 65, 0.15);
+            color: #ffffff;
+        }
+
+        /* حاوية العرض السينمائي */
+        .presentation-container {
+            display: none;
+            width: 100%;
+            max-width: 980px;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .presentation-active .presentation-container {
+            display: flex;
+        }
+
+        .presentation-active header, 
+        .presentation-active footer {
+            display: none !important;
+        }
+
+        /* بطاقة المشهد السينمائي */
+        .scene-card {
+            background-color: #161b22;
+            border: 2px solid #30363d;
+            border-radius: 18px;
+            padding: 24px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            animation: fadeIn 0.35s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(14px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .scene-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #21262d;
+            padding-bottom: 14px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .scene-num {
+            background: linear-gradient(135deg, #238636, #2ea043);
+            color: #ffffff;
+            padding: 7px 20px;
+            border-radius: 25px;
+            font-size: 1.05rem;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 10px rgba(35, 134, 54, 0.3);
+        }
+
+        .scene-status-badge {
+            background-color: #0d1117;
+            border: 1px solid #30363d;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            color: #e3b341;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .scene-status-badge.speaking {
+            color: #58a6ff;
+            border-color: #58a6ff;
+            box-shadow: 0 0 14px rgba(88, 166, 255, 0.3);
+            animation: pulseGlow 1.5s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            from { border-color: #1f6feb; }
+            to { border-color: #58a6ff; }
+        }
+
+        /* صندوق الصورة السينمائي الثابت */
+        .scene-image-box {
+            width: 100%;
+            min-height: 400px;
+            max-height: 540px;
+            background-color: #050811;
+            border: 2px solid #30363d;
+            border-radius: 14px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 12px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.85);
+        }
+
+        .scene-image-box img {
+            max-width: 100%;
+            max-height: 500px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 10px;
+            display: block;
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.7);
+            transition: transform 0.3s ease;
+        }
+
+        .scene-image-box img:hover {
+            transform: scale(1.015);
+        }
+
+        /* مربع مكان الصورة إن لم تكن مضافة بعد */
+        .image-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 35px 20px;
+            text-align: center;
+            gap: 12px;
+        }
+
+        .image-placeholder-icon {
+            font-size: 3.5rem;
+            opacity: 0.85;
+        }
+
+        .image-placeholder-title {
+            color: #58a6ff;
+            font-weight: 800;
+            font-size: 1.25rem;
+        }
+
+        .image-placeholder-desc {
+            color: #f0883e;
+            font-size: 1.05rem;
+            max-width: 650px;
+            line-height: 1.6;
+        }
+
+        .image-placeholder-hint {
+            color: #8b949e;
+            font-size: 0.9rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px 18px;
+            border-radius: 8px;
+            border: 1px dashed #30363d;
+            direction: ltr;
+            display: inline-block;
+        }
+
+        /* صندوق الحوار المنطوق */
+        .scene-speech-box {
+            background-color: #0d1117;
+            border-right: 6px solid #238636;
+            padding: 22px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .speaker-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .speaker-name {
+            color: #58a6ff;
+            font-weight: 800;
+            font-size: 1.3rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .replay-audio-btn {
+            background: #21262d;
+            color: #58a6ff;
+            border: 1px solid #30363d;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 700;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .replay-audio-btn:hover {
+            background: #30363d;
+            color: #ffffff;
+        }
+
+        .spoken-text {
+            color: #f0f6fc;
+            font-size: 1.35rem;
+            line-height: 1.8;
+            font-weight: 600;
+        }
+
+        /* شريط التحكم السفلي */
+        .presentation-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #161b22;
+            padding: 16px 26px;
+            border-radius: 14px;
+            border: 1px solid #30363d;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .controls-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .control-btn {
+            background-color: #1f6feb;
+            color: white;
+            border: none;
+            padding: 11px 22px;
+            border-radius: 9px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .control-btn:hover:not(:disabled) {
+            background-color: #388bfd;
+            transform: translateY(-1px);
+        }
+
+        .control-btn:disabled {
+            background-color: #21262d;
+            color: #484f58;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .pause-btn {
+            background-color: #8957e5;
+        }
+        .pause-btn:hover:not(:disabled) {
+            background-color: #a371f7;
+        }
+
+        .exit-btn {
+            background-color: #da3633;
+        }
+        .exit-btn:hover {
+            background-color: #f85149;
+        }
+
+        /* ============================================================
+           شاشة ختام العرض وصفحة المبرمج وفريق العمل (ثابتة وغير قابلة للتعديل)
+        ============================================================ */
+        .developer-screen {
+            display: none;
+            width: 100%;
+            background-color: #161b22;
+            border: 2px solid #e3b341;
+            border-radius: 22px;
+            padding: 40px 30px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.85), 0 0 35px rgba(227, 179, 65, 0.2);
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 25px;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .dev-badge {
+            background: linear-gradient(135deg, #d29922, #f0883e);
+            color: #0b0f19;
+            padding: 8px 26px;
+            border-radius: 30px;
+            font-size: 1.15rem;
+            font-weight: 900;
+            box-shadow: 0 4px 15px rgba(210, 153, 34, 0.35);
+        }
+
+        .dev-title {
+            color: #ffffff;
+            font-size: 2.3rem;
+            font-weight: 900;
+        }
+
+        .dev-subtitle {
+            color: #8b949e;
+            font-size: 1.15rem;
+            max-width: 750px;
+            line-height: 1.7;
+        }
+
+        .dev-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 22px;
+            width: 100%;
+            max-width: 900px;
+            margin-top: 10px;
+        }
+
+        .dev-card {
+            background-color: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 16px;
+            padding: 26px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .dev-card:hover {
+            border-color: #58a6ff;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .dev-card.featured {
+            border: 2px solid #e3b341;
+            background: linear-gradient(180deg, rgba(227, 179, 65, 0.12) 0%, #0d1117 100%);
+            box-shadow: 0 0 30px rgba(227, 179, 65, 0.25);
+        }
+
+        .dev-card-icon {
+            font-size: 3rem;
+        }
+
+        .dev-card-title {
+            color: #8b949e;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        /* اسم المبرمج محمي وثابت بالكامل */
+        .dev-card-name {
+            color: #ffffff;
+            font-size: 1.6rem;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 10px rgba(227, 179, 65, 0.3);
+        }
+
+        .dev-card-desc {
+            color: #e3b341;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .verified-badge {
+            background-color: rgba(35, 134, 54, 0.2);
+            color: #7ee787;
+            border: 1px solid #238636;
+            padding: 3px 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .dev-footer-actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #8b949e;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body id="main-body">
+
+    <header id="main-header">
+        <div class="school-title-badge">مدرسة السادات الثانوية بنين – إدارة السنبلاوين التعليمية</div>
+        <h1>حكاية اسم مدرسة السادات الثانوية بنين</h1>
+        <p>المشروع السينمائي المتكامل - إلقاء صوتي رجالي نقي مع تقليب تلقائي ذكي للمشاهد</p>
+        
+        <!-- إشعار المبرمج الثابت -->
+        <div>
+            <div class="dev-credit-pill">
+                <span>💻 تم التصميم والبرمجة والتطوير بواسطة:</span>
+                <span style="color: #ffffff; font-weight: 900;">المهندس أدهم محمد إبراهيم</span>
+            </div>
+        </div>
+
+        <div class="header-actions">
+            <button class="start-project-btn" onclick="startProject()">🎥 ابدأ العرض السينمائي الكامل</button>
+            <a href="developer.html" class="view-dev-btn">👑 صفحة المبرمج وفريق العمل</a>
+        </div>
+    </header>
+
+    <!-- حاوية العرض السينمائي -->
+    <div class="presentation-container" id="presentation-container">
+        
+        <!-- بطاقة المشهد النشط -->
+        <div id="active-scene-slot"></div>
+
+        <!-- شريط التحكم والتنقل -->
+        <div class="presentation-controls" id="controls-bar">
+            <div class="controls-group">
+                <button class="control-btn" id="prev-btn" onclick="userChangeSlide(-1)">◀ المشهد السابق</button>
+                <button class="control-btn pause-btn" id="pause-btn" onclick="toggleAutoPlay()">⏸️ إيقاف مؤقت</button>
+                <button class="control-btn" id="next-btn" onclick="userChangeSlide(1)">المشهد التالي ▶</button>
+            </div>
+            <div class="controls-group">
+                <button class="control-btn exit-btn" onclick="exitProject()">✕ إنهاء العرض</button>
+            </div>
+        </div>
+
+        <!-- شاشة صفحة المبرمج وفريق العمل (تظهر تلقائياً بعد ختام المشهد 20 وثابتة بالكامل) -->
+        <div class="developer-screen" id="developer-screen">
+            <span class="dev-badge">✨ ختام المشروع السينمائي ✨</span>
+            <h2 class="dev-title">مدرسة السادات الثانوية بنين – السنبلاوين</h2>
+            <p class="dev-subtitle">«نعرف تاريخنا... لنصنع مستقبلنا» — تم توثيق وسرد قصة وبطولات الرئيس الراحل محمد أنور السادات وارتباطها بتسمية مدرستنا العريقة بهذا العرض السينمائي التفاعلي.</p>
+
+            <div class="dev-cards-grid">
+                <!-- بطاقة المبرمج الثابتة المحمية -->
+                <div class="dev-card featured">
+                    <span class="dev-card-icon">💻</span>
+                    <span class="dev-card-title">برمجة وتطوير العرض السينمائي</span>
+                    <div class="dev-card-name">المهندس أدهم محمد إبراهيم</div>
+                    <span class="dev-card-desc">المطور ومبرمج الأنظمة التفاعلية</span>
+                    <span class="verified-badge">✓ معتمد وموثق</span>
+                </div>
+
+                <!-- بطاقة الإشراف -->
+                <div class="dev-card">
+                    <span class="dev-card-icon">🎖️</span>
+                    <span class="dev-card-title">إشراف ومتابعة تربوية</span>
+                    <div class="dev-card-name">مستر سيد & مستر أشرف</div>
+                    <span class="dev-card-desc" style="color: #7ee787;">أسرة المعلمين بمدرسة السادات الثانوية بنين</span>
+                </div>
+
+                <!-- بطاقة الطلاب والإنتاج -->
+                <div class="dev-card">
+                    <span class="dev-card-icon">🎓</span>
+                    <span class="dev-card-title">المشاركة الطلابية والأداء</span>
+                    <div class="dev-card-name">طلاب مدرسة السادات بنين</div>
+                    <span class="dev-card-desc" style="color: #7ee787;">جيل يصنع المجد بالعلم والانتماء لمصر</span>
+                </div>
+            </div>
+
+            <div class="dev-footer-actions">
+                <button class="start-project-btn" onclick="restartProject()">🔄 إعادة تشغيل العرض من البداية</button>
+                <button class="control-btn exit-btn" onclick="exitProject()">✕ خروج من العرض</button>
+            </div>
+        </div>
+
+    </div>
+
+    <footer id="main-footer">
+        <p>مدرسة السادات الثانوية بنين – إدارة السنبلاوين التعليمية | برمجة وتطوير: المهندس أدهم محمد إبراهيم. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script>
+        /*
+        =============================================================================
+        المشروع السينمائي: حكاية اسم مدرسة السادات الثانوية بنين
+        برمجة وتطوير: المهندس أدهم محمد إبراهيم
+        - الصوت: ملفات صوتية رجالية مسجلة بنقاء استوديو عالي (صوت رجل مصري أصيل).
+        - التشغيل: تشغيل صوتي تلقائي فور بدء كل مشهد.
+        - التقليب: انتقال آلي للمشهد التالي بعد انتهاء صوت الراوي بوقفة سينمائية.
+        - شاشة النهاية: مخصصة باسم المهندس أدهم محمد إبراهيم ومقفلة ضد أي تعديل.
+        =============================================================================
+        */
+        const PROGRAMMER_NAME = "المهندس أدهم محمد إبراهيم";
+
+        const scenesData = [
+            {
+                id: 1,
+                speaker: "الطالب",
+                text: "«يا مستر سيد... هو مدرستنا اتسمّت باسم السادات ليه؟»",
+                imgReq: "صورة الطالب + صورة مستر سيد + صورة واجهة مدرسة السادات الثانوية بنين",
+                image: "WhatsApp Image 2026-10-05 at 6.40.22 PM (1).jpeg",
+                audio: "audio/scene_1.mp3"
+            },
+            {
+                id: 2,
+                speaker: "مستر سيد",
+                text: "«سؤال جميل يا بطل... إنت تعرف مين أنور السادات؟»",
+                imgReq: "صورة الطالب + صورة مستر سيد",
+                image: "", // 👈 ضع هنا اسم ملف صورة المشهد 2
+                audio: "audio/scene_2.mp3"
+            },
+            {
+                id: 3,
+                speaker: "الطالب",
+                text: "«أعرف إنه كان رئيس مصر... بس مش عارف عمل إيه لمصر.»",
+                imgReq: "صورة الطالب + صورة مستر سيد",
+                image: "", // 👈 ضع هنا اسم ملف صورة المشهد 3
+                audio: "audio/scene_3.mp3"
+            },
+            {
+                id: 4,
+                speaker: "مستر سيد",
+                text: "«طيب... خلينا نخلي صاحب الحكاية نفسه يحكيلك.»",
+                imgReq: "صورة الطالب + صورة مستر سيد + صورة الرئيس أنور السادات",
+                image: "WhatsApp Image 2026-10-05 at 6.40.22 PM (6).jpeg",
+                audio: "audio/scene_4.mp3"
+            },
+            {
+                id: 5,
+                speaker: "السادات",
+                text: "«أنا محمد أنور السادات... وُلدت عام 1918.»",
+                imgReq: "صورة الرئيس أنور السادات + صورة الطالب",
+                image: "", // 👈 ضع هنا اسم ملف صورة المشهد 5
+                audio: "audio/scene_5.mp3"
+            },
+            {
+                id: 6,
+                speaker: "السادات",
+                text: "«كنت واحدًا من رجال ثورة 23 يوليو 1952.»",
+                imgReq: "صورة الرئيس أنور السادات + صور رمزية لثورة 23 يوليو",
+                image: "WhatsApp Image 2026-10-05 at 6.40.22 PM (8).jpeg",
+                audio: "audio/scene_6.mp3"
+            },
+            {
+                id: 7,
+                speaker: "السادات",
+                text: "«وبعد وفاة الرئيس جمال عبد الناصر... توليت رئاسة مصر عام 1970.»",
+                imgReq: "صورة الرئيس أنور السادات + صورة الطالب",
+                image: "WhatsApp Image 2026-10-05 at 6.40.22 PM (7).jpeg",
+                audio: "audio/scene_7.mp3"
+            },
+            {
+                id: 8,
+                speaker: "السادات",
+                text: "«وكانت حرب أكتوبر عام 1973 من أهم المحطات في تاريخ مصر.»",
+                imgReq: "صورة الرئيس أنور السادات + صور حرب أكتوبر 1973",
+                image: "WhatsApp Image 2026-10-05 at 6.40.22 PM (4).jpeg",
+                audio: "audio/scene_8.mp3"
+            },
+            {
+                id: 9,
+                speaker: "مستر سيد",
+                text: "«الجيش المصري عبر قناة السويس... وبدأ معركة استعادة الأرض والكرامة.»",
+                imgReq: "صورة مستر سيد + صور الجيش المصري وعبور قناة السويس",
+                image: "", // 👈 ضع هنا اسم ملف صورة المشهد 9
+                audio: "audio/scene_9.mp3"
+            },
+            {
+                id: 10,
+                speaker: "السادات",
+                text: "«وبعد حرب أكتوبر... اتجهت مصر إلى طريق المفاوضات والسلام.»",
+                imgReq: "صورة الرئيس أنور السادات + صور السلام والمفاوضات",
+                image: "WhatsApp Image 2026-10-05 at 6.40.22 PM (9).jpeg",
+                audio: "audio/scene_10.mp3"
+            },
+            {
+                id: 11,
+                speaker: "السادات",
+                text: "«وفي عام 1979... وُقّعت معاهدة السلام المصرية الإسرائيلية.»",
+                imgReq: "صورة الرئيس أنور السادات + مشهد توقيع معاهدة السلام",
+                image: "WhatsApp Image 2026-10-05 at 6.40.22 PM (2).jpeg",
+                audio: "audio/scene_11.mp3"
+            },
+            {
+                id: 12,
+                speaker: "الطالب",
+                text: "«دلوقتي فهمت ليه اسم السادات مهم في تاريخ مصر.»",
+                imgReq: "صورة الطالب + صورة مستر سيد + واجهة المدرسة",
+                image: "", // 👈 ضع هنا اسم ملف صورة المشهد 12
+                audio: "audio/scene_12.mp3"
+            },
+            {
+                id: 13,
+                speaker: "الطالب",
+                text: "«بس ليه مدرستنا تحديدًا اتسمّت باسمه؟»",
+                imgReq: "صورة الطالب + صورة مستر سيد",
+                image: "", // 👈 ضع هنا اسم ملف صورة المشهد 13
+                audio: "audio/scene_13.mp3"
+            },
+            {
+                id: 14,
+                speaker: "مستر سيد",
+                text: "«لأن اسم السادات ارتبط بمرحلة مهمة جدًا من تاريخ مصر... خصوصًا حرب أكتوبر والسلام.»",
+                imgReq: "صورة مستر سيد + واجهة مدرسة السادات الثانوية بنين",
+                image: "", // 👈 ضع هنا اسم ملف صورة المشهد 14
+                audio: "audio/scene_14.mp3"
+            },
+            {
+                id: 15,
+                speaker: "السادات",
+                text: "«وتذكر يا بني... أسماء مدارسنا ومؤسساتنا ليست مجرد أسماء.»",
+                imgReq: "صورة الرئيس أنور السادات + صورة الطالب",
+                image: "WhatsApp Image 2026-10-05 at 6.40.22 PM (5).jpeg",
+                audio: "audio/scene_15.mp3"
+            },
+            {
+                id: 16,
+                speaker: "السادات",
+                text: "«هي جزء من ذاكرة الوطن وتاريخه... والأهم أن تتعلموا من التاريخ.»",
+                imgReq: "صورة السادات + صورة الطالب + العلم المصري",
+                image: "", // 👈 ضع هنا اسم ملف صورة المشهد 16
+                audio: "audio/scene_16.mp3"
+            },
+            {
+                id: 17,
+                speaker: "الطالب",
+                text: "«يعني اسم مدرستنا مرتبط بتاريخ مصر... وبشخصية مهمة في تاريخها.»",
+                imgReq: "صورة الطالب + صورة مستر سيد + واجهة المدرسة",
+                image: "", // 👈 ضع هنا اسم ملف صورة المشهد 17
+                audio: "audio/scene_17.mp3"
+            },
+            {
+                id: 18,
+                speaker: "مستر أشرف",
+                text: "«ومدرستنا هتفضل دايمًا تزرع في أبنائها حب الوطن والانتماء لمصر.»",
+                imgReq: "صورة مستر أشرف + الطالب + مستر سيد + السادات + العلم المصري",
+                image: "WhatsApp Image 2026-10-05 at 6.40.22 PM.jpeg",
+                audio: "audio/scene_18.mp3"
+            },
+            {
+                id: 19,
+                speaker: "الجميع (كلام جماعي)",
+                text: "«تحيا مصر!»",
+                imgReq: "جميع الشخصيات (الطالب، مستر سيد، مستر أشرف، السادات) + العلم المصري",
+                image: "", // 👈 ضع هنا اسم ملف صورة المشهد 19
+                audio: "audio/scene_19.mp3"
+            },
+            {
+                id: 20,
+                speaker: "النهاية",
+                text: "مدرسة السادات الثانوية بنين بالسنبلاوين\n«نعرف تاريخنا... لنصنع مستقبلنا.»",
+                imgReq: "صورة واجهة مدرسة السادات الثانوية بنين + العلم المصري (بدون أشخاص)",
+                image: "WhatsApp Image 2026-10-05 at 6.40.22 PM (3).jpeg",
+                audio: "audio/scene_20.mp3"
+            }
+        ];
+
+        let currentSlideIndex = 0;
+        let isAutoPlayPaused = false;
+        let autoAdvanceTimer = null;
+        const currentAudioPlayer = new Audio();
+
+        function startProject() {
+            document.body.classList.add('presentation-active');
+            isAutoPlayPaused = false;
+            currentSlideIndex = 0;
+            
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen().catch(() => {});
+            }
+
+            renderCurrentSlide();
+        }
+
+        function restartProject() {
+            stopAudioAndTimers();
+            document.getElementById('developer-screen').style.display = 'none';
+            document.getElementById('active-scene-slot').style.display = 'block';
+            document.getElementById('controls-bar').style.display = 'flex';
+            currentSlideIndex = 0;
+            isAutoPlayPaused = false;
+            renderCurrentSlide();
+        }
+
+        function exitProject() {
+            stopAudioAndTimers();
+            document.body.classList.remove('presentation-active');
+            
+            document.getElementById('developer-screen').style.display = 'none';
+            document.getElementById('active-scene-slot').style.display = 'block';
+            document.getElementById('controls-bar').style.display = 'flex';
+
+            if (document.fullscreenElement && document.exitFullscreen) {
+                document.exitFullscreen().catch(() => {});
+            }
+        }
+
+        function stopAudioAndTimers() {
+            if (autoAdvanceTimer) {
+                clearTimeout(autoAdvanceTimer);
+                autoAdvanceTimer = null;
+            }
+            try {
+                currentAudioPlayer.pause();
+                currentAudioPlayer.currentTime = 0;
+            } catch(e) {}
+
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+            }
+        }
+
+        function toggleAutoPlay() {
+            isAutoPlayPaused = !isAutoPlayPaused;
+            const btn = document.getElementById('pause-btn');
+            if (isAutoPlayPaused) {
+                currentAudioPlayer.pause();
+                if (autoAdvanceTimer) clearTimeout(autoAdvanceTimer);
+                btn.textContent = '▶️ استئناف التشغيل التلقائي';
+                btn.style.backgroundColor = '#238636';
+                updateStatusBadge('⏸️ التشغيل التلقائي متوقف مؤقتاً', false);
+            } else {
+                btn.textContent = '⏸️ إيقاف مؤقت';
+                btn.style.backgroundColor = '#8957e5';
+                if (currentAudioPlayer.paused && currentAudioPlayer.src) {
+                    currentAudioPlayer.play().catch(() => {});
+                    updateStatusBadge('🎙️ جاري إلقاء الحوار بصوت الراوي...', true);
+                } else {
+                    const scene = scenesData[currentSlideIndex];
+                    playSceneAudio(scene);
+                }
+            }
+        }
+
+        function userChangeSlide(direction) {
+            stopAudioAndTimers();
+            currentSlideIndex += direction;
+            if (currentSlideIndex < 0) currentSlideIndex = 0;
+            if (currentSlideIndex >= scenesData.length) {
+                showDeveloperScreen();
+                return;
+            }
+            renderCurrentSlide();
+        }
+
+        function renderCurrentSlide() {
+            stopAudioAndTimers();
+
+            document.getElementById('developer-screen').style.display = 'none';
+            document.getElementById('active-scene-slot').style.display = 'block';
+            document.getElementById('controls-bar').style.display = 'flex';
+
+            const scene = scenesData[currentSlideIndex];
+            const slot = document.getElementById('active-scene-slot');
+            
+            const hasImage = scene.image && scene.image.trim() !== '';
+
+            slot.innerHTML = `
+                <div class="scene-card" style="${scene.id === 20 ? 'border-color: #238636;' : ''}">
+                    <div class="scene-header">
+                        <span class="scene-num" style="${scene.id === 20 ? 'background: #1f6feb;' : ''}">
+                            🎬 ${scene.id === 20 ? 'المشهد 20 (الختام)' : 'المشهد ' + scene.id} (من ${scenesData.length})
+                        </span>
+                        <div class="scene-status-badge speaking" id="scene-status">
+                            🎙️ جاري إلقاء الحوار بصوت الراوي...
+                        </div>
+                    </div>
+                    
+                    <div class="scene-image-box">
+                        ${hasImage ? `
+                            <img id="scene-img-${scene.id}" src="${scene.image}" alt="صورة المشهد ${scene.id}" onerror="handleImageError(this, ${scene.id})">
+                            <div id="fallback-${scene.id}" class="image-placeholder" style="display: none;">
+                                <span class="image-placeholder-icon">⚠️</span>
+                                <span class="image-placeholder-title">لم يتم العثور على ملف الصورة</span>
+                                <span class="image-placeholder-desc">تأكد من وضع ملف الصورة (${scene.image}) في نفس مجلد ملف HTML.</span>
+                                <span class="image-placeholder-hint">المطلوب: ${scene.imgReq}</span>
+                            </div>
+                        ` : `
+                            <div class="image-placeholder">
+                                <span class="image-placeholder-icon">🖼️</span>
+                                <span class="image-placeholder-title">المشهد بانتظار إضافة الصورة في الكود</span>
+                                <span class="image-placeholder-desc">المطلوب لهذا المشهد: ${scene.imgReq}</span>
+                                <span class="image-placeholder-hint">image: "اسم_ملف_الصورة.jpeg"</span>
+                            </div>
+                        `}
+                    </div>
+
+                    <div class="scene-speech-box">
+                        <div class="speaker-info">
+                            <span class="speaker-name">🎙️ المتحدث: ${scene.speaker}</span>
+                            <button class="replay-audio-btn" onclick="replayCurrentSceneAudio()">🔊 إعادة سماع المشهد (صوت رجل)</button>
+                        </div>
+                        <span class="spoken-text">${scene.text.replace(/\n/g, '<br>')}</span>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('prev-btn').disabled = (currentSlideIndex === 0);
+            document.getElementById('next-btn').disabled = false;
+
+            if (!isAutoPlayPaused) {
+                // تشغيل الصوت التلقائي فور تحميل المشهد
+                setTimeout(() => {
+                    playSceneAudio(scene);
+                }, 250);
+            }
+        }
+
+        function updateStatusBadge(msg, isSpeaking = false) {
+            const badge = document.getElementById('scene-status');
+            if (badge) {
+                badge.innerHTML = msg;
+                if (isSpeaking) {
+                    badge.classList.add('speaking');
+                } else {
+                    badge.classList.remove('speaking');
+                }
+            }
+        }
+
+        function handleImageError(imgElement, id) {
+            imgElement.style.display = 'none';
+            const fallback = document.getElementById(`fallback-${id}`);
+            if (fallback) fallback.style.display = 'flex';
+        }
+
+        // ============================================================
+        // تشغيل الصوت الرجالي الحقيقي (MP3) مع الانتقال التلقائي
+        // ============================================================
+        function playSceneAudio(scene) {
+            stopAudioAndTimers();
+
+            updateStatusBadge('🎙️ جاري إلقاء الحوار بصوت الراوي...', true);
+
+            currentAudioPlayer.src = scene.audio;
+            currentAudioPlayer.playbackRate = 1.0;
+
+            currentAudioPlayer.onended = function() {
+                if (isAutoPlayPaused) {
+                    updateStatusBadge('⏸️ انتهى الإلقاء (العرض موقوف مؤقتاً)', false);
+                    return;
+                }
+
+                updateStatusBadge('⏱️ يقلب تلقائياً للمشهد التالي خلال ثانية...', false);
+                // وقفة مريحة 1.3 ثانية قبل التقليب التلقائي
+                autoAdvanceTimer = setTimeout(() => {
+                    autoAdvanceNext();
+                }, 1300);
+            };
+
+            currentAudioPlayer.onerror = function() {
+                console.warn('Audio file error, falling back to TTS for scene:', scene.id);
+                fallbackSpeechSynthesis(scene.text);
+            };
+
+            const playPromise = currentAudioPlayer.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(err => {
+                    console.warn('Autoplay blocked or waiting user gesture:', err);
+                    updateStatusBadge('▶️ اضغط "إعادة سماع المشهد" للبدء', false);
+                });
+            }
+        }
+
+        function replayCurrentSceneAudio() {
+            const scene = scenesData[currentSlideIndex];
+            playSceneAudio(scene);
+        }
+
+        function autoAdvanceNext() {
+            if (isAutoPlayPaused) return;
+
+            currentSlideIndex++;
+            if (currentSlideIndex >= scenesData.length) {
+                showDeveloperScreen();
+            } else {
+                renderCurrentSlide();
+            }
+        }
+
+        // إظهار شاشة المبرمج وفريق العمل الثابتة
+        function showDeveloperScreen() {
+            stopAudioAndTimers();
+
+            document.getElementById('active-scene-slot').style.display = 'none';
+            document.getElementById('controls-bar').style.display = 'none';
+            
+            const devScreen = document.getElementById('developer-screen');
+            devScreen.style.display = 'flex';
+
+            // تشغيل الكلمة الختامية بصوت الراوي
+            currentAudioPlayer.src = 'audio/scene_outro.mp3';
+            currentAudioPlayer.onended = null;
+            currentAudioPlayer.onerror = function() {
+                fallbackSpeechSynthesis(`تم بحمد الله وتوفيقه ختام هذا العرض السينمائي لمدرسة السادات الثانوية بنين بالسنبلاوين. تصميم وبرمجة وتطوير ${PROGRAMMER_NAME}. إشراف مستر سيد ومستر أشرف. نعرف تاريخنا لنصنع مستقبلنا، وتحيا مصر دائماً وأبداً.`);
+            };
+            currentAudioPlayer.play().catch(() => {});
+        }
+
+        // نظام النطق الاحتياطي في حال تعذر تشغيل ملف MP3
+        function fallbackSpeechSynthesis(rawText) {
+            if (!('speechSynthesis' in window)) return;
+            window.speechSynthesis.cancel();
+
+            const cleanText = rawText.replace(/[«»()]/g, '').replace(/\n/g, ' ').trim();
+            const utterance = new SpeechSynthesisUtterance(cleanText);
+            utterance.lang = 'ar-SA';
+            utterance.rate = 0.88;
+            utterance.pitch = 0.45; // صوت رجالي عميق
+
+            utterance.onend = function() {
+                if (!isAutoPlayPaused) {
+                    autoAdvanceTimer = setTimeout(autoAdvanceNext, 1300);
+                }
+            };
+            window.speechSynthesis.speak(utterance);
+        }
+
+        // التنقل عبر لوحة المفاتيح
+        window.addEventListener('keydown', function(e) {
+            if (!document.body.classList.contains('presentation-active')) return;
+            if (e.key === 'ArrowLeft') {
+                userChangeSlide(1);
+            } else if (e.key === 'ArrowRight') {
+                userChangeSlide(-1);
+            } else if (e.key === ' ' || e.key === 'Spacebar') {
+                toggleAutoPlay();
+            } else if (e.key === 'Escape') {
+                exitProject();
+            }
+        });
+    </script>
+</body>
+</html>
