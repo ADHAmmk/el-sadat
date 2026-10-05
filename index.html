@@ -705,6 +705,109 @@
             color: #8b949e;
             font-size: 0.95rem;
         }
+
+        /* ================================================================
+           RESPONSIVE DESIGN - تصميم متجاوب لجميع الأجهزة
+        ================================================================ */
+
+        /* Tablet - تابلت (768px - 1024px) */
+        @media (max-width: 1024px) {
+            header h1 { font-size: 1.9rem; }
+            .scene-image-box { min-height: 320px; max-height: 440px; }
+            .developer-screen, .programmer-screen { padding: 32px 22px; }
+            .concept-person-name { font-size: 1.85rem; }
+            .admin-box-name { font-size: 1.7rem; }
+            .programmer-name-spotlight { font-size: 2.1rem; }
+        }
+
+        /* Mobile Large - موبايل كبير (600px - 768px) */
+        @media (max-width: 768px) {
+            body { padding: 12px; justify-content: flex-start; padding-top: 20px; }
+            header { margin-bottom: 18px; padding-bottom: 16px; }
+            header h1 { font-size: 1.45rem; line-height: 1.35; }
+            header p { font-size: 0.95rem; margin-bottom: 12px; }
+
+            .school-title-badge { font-size: 0.8rem; padding: 4px 12px; }
+            .dev-credit-pill { font-size: 0.8rem; padding: 5px 12px; flex-wrap: wrap; text-align: center; justify-content: center; }
+
+            .start-project-btn { padding: 13px 22px; font-size: 1.05rem; width: 100%; justify-content: center; }
+            .view-dev-btn { padding: 12px 18px; font-size: 0.95rem; width: 100%; justify-content: center; }
+            .header-actions { flex-direction: column; gap: 10px; }
+
+            .scene-card { padding: 16px; gap: 14px; border-radius: 14px; }
+            .scene-image-box { min-height: 200px; max-height: 320px; padding: 8px; }
+            .scene-image-box img { max-height: 310px; }
+            .scene-num { font-size: 0.9rem; padding: 5px 14px; }
+            .scene-status-badge { font-size: 0.8rem; padding: 4px 12px; }
+            .speaker-name { font-size: 1.05rem; }
+            .spoken-text { font-size: 1.1rem; line-height: 1.65; }
+            .replay-audio-btn { font-size: 0.85rem; padding: 7px 12px; }
+            .scene-speech-box { padding: 14px; gap: 10px; }
+
+            .presentation-controls { padding: 12px 14px; gap: 10px; }
+            .control-btn { padding: 9px 14px; font-size: 0.9rem; }
+
+            /* الصفحة الأخيرة */
+            .developer-screen, .programmer-screen { padding: 22px 14px; gap: 16px; border-radius: 16px; }
+            .dev-badge { font-size: 0.95rem; padding: 6px 18px; }
+            .dev-title { font-size: 1.55rem; }
+            .dev-subtitle { font-size: 0.95rem; }
+
+            .concept-design-header { padding: 18px 14px; gap: 6px; }
+            .concept-label { font-size: 1.05rem; }
+            .concept-person-name { font-size: 1.55rem; }
+            .concept-role-desc { font-size: 1rem; }
+
+            .credit-divider { margin: 6px 0; gap: 10px; }
+            .credit-divider-emblem { width: 34px; height: 34px; font-size: 1rem; }
+
+            .admin-duo-grid { grid-template-columns: 1fr; gap: 14px; }
+            .admin-square-box { padding: 20px 14px; border-radius: 14px; }
+            .admin-box-icon { font-size: 2.2rem; }
+            .admin-box-title { font-size: 1.05rem; }
+            .admin-box-name { font-size: 1.55rem; }
+            .admin-box-sub { font-size: 0.85rem; padding: 3px 10px; }
+
+            .btn-to-programmer { padding: 12px 18px; font-size: 1rem; width: 100%; justify-content: center; text-align: center; }
+
+            .programmer-card-spotlight { padding: 24px 14px; gap: 12px; border-radius: 16px; }
+            .programmer-avatar { font-size: 2.8rem; }
+            .programmer-badge-hero { font-size: 0.9rem; padding: 5px 16px; text-align: center; }
+            .programmer-name-spotlight { font-size: 1.7rem; }
+            .programmer-desc-spotlight { font-size: 1rem; }
+
+            .dev-footer-actions { gap: 10px; margin-top: 10px; }
+            .dev-footer-actions button, .dev-footer-actions a { width: 100%; justify-content: center; text-align: center; }
+        }
+
+        /* Mobile Small - موبايل صغير (max 480px) */
+        @media (max-width: 480px) {
+            body { padding: 8px; }
+            header h1 { font-size: 1.2rem; }
+            header p { font-size: 0.85rem; }
+
+            .scene-image-box { min-height: 160px; max-height: 260px; }
+            .scene-image-box img { max-height: 250px; }
+            .spoken-text { font-size: 1rem; }
+            .speaker-name { font-size: 0.95rem; }
+            .scene-speech-box { border-right-width: 4px; }
+
+            .concept-person-name { font-size: 1.3rem; }
+            .admin-box-name { font-size: 1.3rem; }
+            .programmer-name-spotlight { font-size: 1.4rem; }
+            .dev-title { font-size: 1.25rem; }
+
+            .control-btn { padding: 8px 11px; font-size: 0.82rem; }
+            .exit-btn { width: 100%; justify-content: center; }
+            .controls-group { flex-wrap: wrap; gap: 8px; justify-content: center; }
+        }
+
+        /* Landscape Mobile - موبايل أفقي */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .scene-image-box { min-height: 140px; max-height: 200px; }
+            .developer-screen, .programmer-screen { padding: 16px 12px; gap: 12px; }
+            .admin-duo-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+        }
     </style>
 </head>
 <body id="main-body">

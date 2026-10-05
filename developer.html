@@ -208,6 +208,52 @@
             color: #8b949e;
             font-size: 0.95rem;
         }
+
+        /* ================================================================
+           RESPONSIVE DESIGN - تصميم متجاوب لجميع الأجهزة
+        ================================================================ */
+
+        @media (max-width: 1024px) {
+            .container { padding: 32px 24px; }
+            h1 { font-size: 1.9rem; }
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 12px; justify-content: flex-start; padding-top: 20px; }
+            .container { padding: 22px 14px; border-radius: 16px; gap: 18px; }
+            h1 { font-size: 1.4rem; line-height: 1.35; }
+            .school-subtitle { font-size: 1.05rem; }
+            .desc-text { font-size: 0.95rem; }
+
+            .badge { font-size: 0.95rem; padding: 6px 18px; }
+            .quote-box { font-size: 1rem; padding: 12px 16px; }
+
+            /* بطاقة المبرمج */
+            .card.featured { padding: 22px 14px !important; }
+            .card.featured .card-name, .card-name[style] { font-size: 1.6rem !important; }
+            .card.featured .card-role { font-size: 1rem !important; }
+            .card.featured .card-details { font-size: 0.95rem !important; }
+
+            /* مربعات وكيلة ومدير المدرسة */
+            .cards-grid { grid-template-columns: 1fr; gap: 12px; }
+            .card { padding: 20px 14px; border-radius: 14px; }
+            .card-icon { font-size: 2.4rem; }
+            .card-name[style] { font-size: 1.55rem !important; }
+            .card-role[style] { font-size: 1.05rem !important; }
+
+            /* أزرار الإجراءات */
+            .actions-row { flex-direction: column; gap: 10px; }
+            .btn { width: 100%; justify-content: center; text-align: center; padding: 13px 18px; font-size: 1rem; }
+        }
+
+        @media (max-width: 480px) {
+            body { padding: 8px; }
+            .container { padding: 16px 10px; }
+            h1 { font-size: 1.15rem; }
+            .school-subtitle { font-size: 0.9rem; }
+            .card.featured .card-name, .card-name[style] { font-size: 1.35rem !important; }
+            .quote-box { font-size: 0.9rem; }
+        }
     </style>
 </head>
 <body>
